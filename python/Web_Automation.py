@@ -23,11 +23,11 @@ USERAGENTS = [  # [useragent, platform]
 
 def wait(secs):
     """
-    Waits a certain number of seconds ad prints the number of seconds left.
+    Waits a certain number of seconds and prints the number of seconds left.
     :secs: The number of seconds to wait.
     """
     write("( ")
-    for i in range(secs,0,-1):
+    for i in range(secs, 0, -1):
         write(str(i) + ' ')
         time.sleep(1)
     write(")")
@@ -68,7 +68,7 @@ def main():
                 profile.set_preference("general.useragent.override", agent)
                 driver = webdriver.Firefox(firefox_profile=profile)
             elif (BROWSER == "Chrome"):
-                options=webdriver.ChromeOptions()
+                options = webdriver.ChromeOptions()
                 options.add_argument("--user-agent '" + agent + "'")
                 driver = webdriver.Chrome(chrome_options=options)
             else:
