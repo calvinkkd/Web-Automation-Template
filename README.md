@@ -14,8 +14,10 @@ The script and the app both open the Google home page and search for "`test sear
 
 ## Requirements
 * Python script:
+  * Python 3
   * `Requests` module
   * `Selenium` module
+  * Firefox or Chrome browser
   * Browser driver on `PATH`
 * Android app:
   * Permission to access the internet
@@ -29,7 +31,8 @@ The script and the app both open the Google home page and search for "`test sear
     ~~~~
     pip install -r ./requirements.txt
     ~~~~
-1. Download the appropriate browser driver (eg. `Geckodriver` for Firefox or `Chromedriver` for Chrome) from [SeleniumHQ](http://www.seleniumhq.org/download/) and add it to the `PATH`
+1. Install the appropriate browser (Firefox or Chrome)
+1. Download the appropriate browser driver (`Geckodriver` for Firefox or `Chromedriver` for Chrome) from [SeleniumHQ](http://www.seleniumhq.org/download/) and add it to the `PATH`
 1. Run the Python script
 
 ---

@@ -7,10 +7,17 @@ import random
 import requests
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import *
 
 
 # Main URL to go to
 URL = "https://www.google.com"
+
+# Max amount of time to wait (in seconds) for a page to load
+DEFAULT_WAIT = 10
 
 # The browser to use
 BROWSER = "Firefox"
@@ -21,20 +28,39 @@ USERAGENTS = [  # [useragent, platform]
              ]
 
 
-def wait(secs):
+def _wait_explicit(driver, maxSecs, condition):
+    """
+    Waits a certain number of seconds until a condition is satisfied.
+    :driver:    The webdriver used to automate a webpage.
+    :maxSecs:   The maximum number of seconds to wait.
+    :condition: The condition to be satisfied.
+    """
+    try:
+        element = WebDriverWait(driver, maxSecs).until(condition)
+        time.sleep(1)
+        print()
+    except TimeoutException:
+        print()
+        print("ERROR: Page not loaded correctly after", maxSecs, "seconds.")
+        print()
+        driver.quit()
+        exit()
+
+
+def _wait_implicit(secs):
     """
     Waits a certain number of seconds and prints the number of seconds left.
     :secs: The number of seconds to wait.
     """
-    write("( ")
+    _write("\t" + "( ")
     for i in range(secs, 0, -1):
-        write(str(i) + ' ')
+        _write(str(i) + ' ')
         time.sleep(1)
-    write(")")
+    _write(")")
     print()
 
 
-def write(text):
+def _write(text):
     """
     Print text without a newline at the end.
     :text: The text to print.
@@ -77,9 +103,9 @@ def main():
             time.sleep(1)
 
             # Open URL
-            write("Navigating to " + URL + "\t")
+            _write("Navigating to " + URL)
             driver.get(URL)
-            wait(5)
+            _wait_explicit(driver, DEFAULT_WAIT, EC.title_contains("Google"))
 
             # Perform a search
             print("Performing a search")
@@ -88,13 +114,13 @@ def main():
                 searchButton = driver.find_element_by_name("btnK")
             else:
                 searchBox = driver.find_element_by_name("q")
-                searchButton = driver.find_element_by_id("tsbb")
+                searchButton = driver.find_element_by_class_name("Tg7LZd")
             searchBox.send_keys("test search")
             searchButton.click()
 
             # Wait
-            write("Waiting" + "\t")
-            wait(random.randrange(15,30))
+            _write("Waiting")
+            _wait_implicit(random.randrange(15,30))
             
             # Close browser
             print()
