@@ -2,7 +2,7 @@
 
 This is a template showing how to automate web actions using Python and Selenium, or using the default WebView on Android.
 
-The script and the app both open the Google home page and search for "`test search`".
+The scripts and the app both open the Google home page and search for "`test search`".
 
 ---
 
@@ -13,11 +13,10 @@ The script and the app both open the Google home page and search for "`test sear
 ---
 
 ## Requirements
-* Python script:
+* Python scripts:
   * Python 3
   * `Requests` module
   * `Selenium` module
-  * Firefox or Chrome browser
   * Browser driver on `PATH`
 * Android app:
   * Permission to access the internet
@@ -25,15 +24,15 @@ The script and the app both open the Google home page and search for "`test sear
 
 ---
 
-## Running the Python script
-1. Install [Python 3](https://www.python.org/downloads/) and `pip`
+## Running the Python scripts
+1. Install [Python 3](https://www.python.org/downloads/) and `pip`.
 1. Install the [Requests](https://pypi.python.org/pypi/requests) and [Selenium](https://pypi.python.org/pypi/selenium) Python modules. This can be done using the `requirements.txt` file:
     ~~~~
     pip install -r ./requirements.txt
     ~~~~
-1. Install the appropriate browser (Firefox or Chrome)
-1. Download the appropriate browser driver (`Geckodriver` for Firefox or `Chromedriver` for Chrome) from [SeleniumHQ](http://www.seleniumhq.org/download/) and add it to the `PATH`
-1. Run the Python script
+1. If running the UI automation script, install the appropriate browser (Firefox or Chrome).
+1. Download the appropriate browser driver ([`Geckodriver`](https://github.com/mozilla/geckodriver/releases) for Firefox, [`Chromedriver`](https://sites.google.com/a/chromium.org/chromedriver/downloads) for Chrome, or [`PhantomJS`](http://phantomjs.org/download.html)) and add it to the `PATH`.
+1. Run the Python script.
 
 ---
 
