@@ -6,7 +6,7 @@ from common import main, getUseragents
 from selenium import webdriver
 
 # The browser to use
-BROWSER = "Firefox"
+BROWSER = "Chrome"
 
 # Get list of useragents to use
 useragents = getUseragents()
@@ -21,7 +21,7 @@ def setUpWebdriver(browser, agent):
         driver = webdriver.Firefox(firefox_profile=profile)
     elif (browser == "Chrome"):
         options = webdriver.ChromeOptions()
-        options.add_argument("--user-agent '" + agent + "'")
+        options.add_argument("--user-agent='" + agent + "'")
         driver = webdriver.Chrome(chrome_options=options)
     else:
         print()
